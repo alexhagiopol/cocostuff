@@ -1,6 +1,6 @@
 [submodule "models/deeplab/deeplab-public-ver2"]
 	path = models/deeplab/deeplab-public-ver2
-	url = https://bitbucket.org/aquariusjay/deeplab-public-ver2
+	url = git@github.com:alexhagiopol/deeplab-v2.git
         ignore = dirty
 [submodule "models/fcn/fcn"]
 	path = models/fcn/fcn
