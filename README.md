@@ -1,3 +1,14 @@
+# COCO-Stuff Dataset & Models Updated for Ubuntu 16.04 and GTX 10XX Pascal GPUs 
+
+This work-in-progress repository is my fork of Cesar et al's original COCO-Stuff dataset repo. I've made changes to enable compatibility with 
+modern machines and a modern OS. I am specifically interested in the DeepLab model applied to Cesar et al's dataset.
+To configure and test your machine for training and testing on the DeepLab model, do the following:
+
+    git clone https://github.com/alexhagiopol/cocostuff.git
+    cd cocostuff
+    bash configure_deeplab_ubuntu16.sh
+
+# Original Authors' Readme: 
 # COCO-Stuff 10K dataset v1.1
 [Holger Caesar](http://www.it-caesar.com), [Jasper Uijlings](http://homepages.inf.ed.ac.uk/juijling), [Vittorio Ferrari](http://calvin.inf.ed.ac.uk/members/vittoferrari)
 
