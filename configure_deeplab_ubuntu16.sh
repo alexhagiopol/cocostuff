@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set -e
 # install dependencies for Ubuntu 16.04 and Pascal GPUs
-# nvidia driver
+# nvidia driver compatible with Pascal
 sudo add-apt-repository ppa:xorg-edgers/ppa
 sudo apt-get update
-sudo apt-get install nvidia-375
+sudo apt-get install nvidia-384
 # cuda toolkit
 wget -O cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb "https://www.dropbox.com/s/08ufs95pw94gu37/cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb?dl=1"
 sudo dpkg -i cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb
@@ -15,13 +15,13 @@ wget -O cudnn-8.0-linux-x64-v5.1.tgz "https://www.dropbox.com/s/9uah11bwtsx5fwl/
 tar -xvzf cudnn-8.0-linux-x64-v5.1.tgz
 cd cuda/lib64
 # export paths
-# export LD_LIBRARY_PATH=/home/alex/cuda/lib64:$LD_LIBRARY_PATH
-# export CUDA_HOME=/home/alex/cuda/
-export LD_LIBRARY_PATH=`pwd`:$LD_LIBRARY_PATH
+echo export LD_LIBRARY_PATH=$PWD:\$LD_LIBRARY_PATH >> ~/.bashrc
 cd ..
-export CUDA_HOME=`pwd`
+echo export CUDA_HOME=$PWD >> ~/.bashrc
+source ~/.bashrc
+# cuDNN dependency
 sudo apt-get install libcupti-dev
-# caffe's misc dependencies
+# caffe's dependencies
 sudo apt-get install -y libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler
 sudo apt-get install -y --no-install-recommends libboost-all-dev
 sudo apt-get install -y libatlas-base-dev

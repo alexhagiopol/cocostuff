@@ -8,8 +8,8 @@ To configure and test your machine for training and testing on the DeepLab model
     cd cocostuff
     bash configure_deeplab_ubuntu16.sh
 
-# Original Authors' Readme: 
-# COCO-Stuff 10K dataset v1.1
+ 
+# Original Authors' Readme: COCO-Stuff 10K dataset v1.1
 [Holger Caesar](http://www.it-caesar.com), [Jasper Uijlings](http://homepages.inf.ed.ac.uk/juijling), [Vittorio Ferrari](http://calvin.inf.ed.ac.uk/members/vittoferrari)
 
 ## Overview
