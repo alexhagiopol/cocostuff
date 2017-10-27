@@ -4,12 +4,12 @@ set -e
 # nvidia driver compatible with Pascal
 sudo add-apt-repository ppa:xorg-edgers/ppa
 sudo apt-get update
-sudo apt-get install nvidia-384
+sudo apt-get install -y nvidia-384
 # cuda toolkit
 wget -O cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb "https://www.dropbox.com/s/08ufs95pw94gu37/cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb?dl=1"
 sudo dpkg -i cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb
 sudo apt-get update
-sudo apt-get install cuda
+sudo apt-get install -y cuda
 # cuDNN
 wget -O cudnn-8.0-linux-x64-v5.1.tgz "https://www.dropbox.com/s/9uah11bwtsx5fwl/cudnn-8.0-linux-x64-v5.1.tgz?dl=1"
 tar -xvzf cudnn-8.0-linux-x64-v5.1.tgz
@@ -28,6 +28,10 @@ sudo apt-get install -y libatlas-base-dev
 sudo apt-get install -y libgflags-dev libgoogle-glog-dev liblmdb-dev
 sudo apt-get install -y libmatio-dev
 sudo apt-get install -y python-numpy
+# python script dependencies
+sudo apt-get install -y python-matplotlib
+sudo apt-get install -y python-opencv
+sudo apt-get install -y python-scipy
 # download dataset
 wget --directory-prefix=downloads http://calvin.inf.ed.ac.uk/wp-content/uploads/data/cocostuffdataset/cocostuff-10k-v1.1.zip
 unzip downloads/cocostuff-10k-v1.1.zip -d dataset/
