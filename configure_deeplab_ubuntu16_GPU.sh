@@ -46,7 +46,7 @@ python dataset/code/conversion/convertAnnotationsDeeplab.py
 # go into deeplab dir
 cd models/deeplab/deeplab-public-ver2
 # copy makefile config example to actual makefile config
-cp Makefile.config.example Makefile.config
+cp Makefile.config.example.GPU Makefile.config
 # compile
 make all -j$(nproc)
 # run tests to make sure your GPU and software work together
