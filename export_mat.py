@@ -37,29 +37,41 @@ def mat_to_img(mat_file_path):
 def mask_visualization(input_img, annotation_img):
     for i in range(input_img.shape[2]):
         input_img[:, :, i] = input_img[:, :, i] * (annotation_img / 255)
+    # mark masked out spots with red
+    annotation_img = annotation_img / 255
+    annotation_img[annotation_img == 0] = 255
+    annotation_img[annotation_img == 1] = 0
+    input_img[:, :, 0] += np.uint8(annotation_img)
     return input_img
 
 
 if __name__ == "__main__":
+    if len(sys.argv != 5):
+        print("Usage: \n python export_mat.py relative/path/to/input/images relative/path/to/mat/files /elative/path/to/results visualize?_0or1 \n "
+              "Example: python export_mat.py dataset/images models/deeplab/cocostuff/features/deeplabv2_vgg16/val/fc8 results/ 0")
+        sys.exit()
     current_path = os.path.abspath(os.path.dirname(os.path.realpath(__file__)))
-    list_path = os.path.join(current_path, "models/deeplab/cocostuff/list")
-    input_image_path = os.path.join(current_path, "dataset/images")
-    output_mat_path = os.path.join(current_path, "models/deeplab/cocostuff/features/deeplabv2_vgg16/val/fc8")
-
-    mat_file_paths = glob.glob(os.path.join(output_mat_path, "*.mat"))
+    input_image_path = os.path.join(current_path, sys.argv[1])
+    mat_path = os.path.join(current_path, sys.argv[2])
+    output_mask_path = os.path.join(current_path, sys.argv[3])
+    visualize = int(sys.argv[4])
+    mat_file_paths = glob.glob(os.path.join(mat_path, "*.mat"))
     for mat_file_path in mat_file_paths:
-        image_name = mat_file_path[len(output_mat_path) + 1: -11]
+        image_name = mat_file_path[len(mat_path) + 1: -11]
         matching_input_images = glob.glob(os.path.join(input_image_path, image_name + "*"))
         if len(matching_input_images) < 1:
             print("No matching input found for " + image_name)
             continue
         image_file_path = matching_input_images[0]
         input_image = cv2.cvtColor(cv2.imread(image_file_path), cv2.COLOR_BGR2RGB)
-        plt.figure(figsize=(30, 90))
-        show_image((1, 3, 1), "input image " + str(input_image.shape),input_image, 30, False)
         output_mat_image = mat_to_img(mat_file_path)
-        show_image((1, 3, 2), "output annotation image " + str(output_mat_image.shape), output_mat_image, 30, False)
         mask = mask_visualization(input_image.copy(), output_mat_image.copy())
-        show_image((1, 3, 3), "mask visualization " + str(mask.shape), mask, 30, False)
-        plt.show()
-        plt.close()
+        if visualize:
+            plt.figure()
+            show_image((1, 3, 1), "input image " + str(input_image.shape),input_image, 40, False)
+            show_image((1, 3, 2), "output annotation image " + str(output_mat_image.shape), output_mat_image, 40, False)
+            show_image((1, 3, 3), "mask visualization " + str(mask.shape), mask, 40, False)
+            plt.show()
+            plt.savefig(os.path.join(output_mask_path, image_name + "_dnn_mask_visualization.png"))
+            plt.close()
+        cv2.imwrite(os.path.join(output_mask_path, image_name + "_mask.png", output_mat_image))
