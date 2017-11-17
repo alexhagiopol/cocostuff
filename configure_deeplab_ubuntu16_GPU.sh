@@ -29,9 +29,9 @@ sudo apt-get install -y libgflags-dev libgoogle-glog-dev liblmdb-dev
 sudo apt-get install -y libmatio-dev
 sudo apt-get install -y python-numpy
 # python script dependencies
-sudo apt-get install -y python-matplotlib
-sudo apt-get install -y python-opencv
-sudo apt-get install -y python-scipy
+sudo apt-get install -y python3-matplotlib
+sudo apt-get install -y python3-opencv
+sudo apt-get install -y python3-scipy
 # download dataset
 wget --directory-prefix=downloads http://calvin.inf.ed.ac.uk/wp-content/uploads/data/cocostuffdataset/cocostuff-10k-v1.1.zip
 unzip downloads/cocostuff-10k-v1.1.zip -d dataset/
