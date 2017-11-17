@@ -46,7 +46,7 @@ def mask_visualization(input_img, annotation_img):
 
 
 if __name__ == "__main__":
-    if len(sys.argv != 5):
+    if len(sys.argv) != 5:
         print("Usage: \n python export_mat.py relative/path/to/input/images relative/path/to/mat/files /elative/path/to/results visualize?_0or1 \n "
               "Example: python export_mat.py dataset/images models/deeplab/cocostuff/features/deeplabv2_vgg16/val/fc8 results/ 0")
         sys.exit()
@@ -74,4 +74,4 @@ if __name__ == "__main__":
             plt.show()
             plt.savefig(os.path.join(output_mask_path, image_name + "_dnn_mask_visualization.png"))
             plt.close()
-        cv2.imwrite(os.path.join(output_mask_path, image_name + "_mask.png", output_mat_image))
+        cv2.imwrite(os.path.join(output_mask_path, image_name + "_mask.png"), output_mat_image)
