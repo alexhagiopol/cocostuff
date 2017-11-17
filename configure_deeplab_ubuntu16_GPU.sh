@@ -51,3 +51,5 @@ cp Makefile.config.example.GPU Makefile.config
 make all -j$(nproc)
 # run tests to make sure your GPU and software work together
 make runtest -j$(nproc)
+# download base VGG16 model and place in path
+wget --directory-prefix=models/deeplab/cocostuff/model/deeplabv2_vgg16 http://calvin.inf.ed.ac.uk/wp-content/uploads/data/cocostuffdataset/deeplabv2_vgg16_init.caffemodel
