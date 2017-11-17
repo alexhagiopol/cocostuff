@@ -6,7 +6,14 @@ To configure and test your machine for training and testing on the DeepLab model
 
     git clone https://github.com/alexhagiopol/cocostuff.git
     cd cocostuff
-    bash configure_deeplab_ubuntu16.sh
+
+GPU Version:
+
+    bash configure_deeplab_ubuntu16_GPU.sh
+
+CPU-Only Version:
+
+    bash configure_deeplab_ubuntu16_CPU.sh
 
  
 # Original Authors' Readme: COCO-Stuff 10K dataset v1.1
