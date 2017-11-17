@@ -29,7 +29,8 @@ python dataset/code/conversion/convertAnnotationsDeeplab.py
 wget -O cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb "https://www.dropbox.com/s/08ufs95pw94gu37/cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb?dl=1"
 sudo dpkg -i cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb
 sudo apt-get update
-sudo apt-get install -y cuda
+# no driver and samples. cuda toolkit not cuda!
+sudo apt-get install -y cuda-toolkit-8-0
 
 # go into deeplab dir to compile
 cd models/deeplab/deeplab-public-ver2
