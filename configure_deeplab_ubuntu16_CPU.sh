@@ -9,6 +9,11 @@ sudo apt-get install -y libatlas-base-dev
 sudo apt-get install -y libgflags-dev libgoogle-glog-dev liblmdb-dev
 sudo apt-get install -y libmatio-dev
 sudo apt-get install -y python-numpy
+
+# needed for CPU-only multithreading
+sudo apt-get install -y libopenblas-dev
+NUMBER_OF_CORES=16
+echo "export OPENBLAS_NUM_THREADS=($NUMBER_OF_CORES)" >> ~/.bash_profile
 # python script dependencies
 sudo apt-get install -y python3-matplotlib
 sudo apt-get install -y python3-opencv
