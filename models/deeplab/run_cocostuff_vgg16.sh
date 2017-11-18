@@ -37,7 +37,7 @@ mkdir -p ${LOG_DIR}
 export GLOG_log_dir=${LOG_DIR}
 
 ## Run
-RUN_TRAIN=1
+RUN_TRAIN=0
 RUN_TEST=1
 
 ## Training #1 
@@ -85,9 +85,7 @@ if [ ${RUN_TEST} -eq 1 ]; then
 						${CONFIG_DIR}/test.prototxt > ${CONFIG_DIR}/test_${TEST_SET}.prototxt
 				CMD="${CAFFE_BIN} test \
              --model=${CONFIG_DIR}/test_${TEST_SET}.prototxt \
-             --weights=${MODEL} \
-             --gpu=${DEV_ID} \
-             --iterations=${TEST_ITER}"
+             --weights=${MODEL} --iterations=1"
 				echo Running ${CMD} && ${CMD}
     done
 fi
