@@ -12,8 +12,7 @@ sudo apt-get install -y python-numpy
 
 # needed for CPU-only multithreading
 sudo apt-get install -y libopenblas-dev
-NUMBER_OF_CORES=16
-echo "export OPENBLAS_NUM_THREADS=($NUMBER_OF_CORES)" >> ~/.bash_profile
+echo "export OPENBLAS_NUM_THREADS=16" >> ~/.bashrc
 # python script dependencies
 sudo apt-get install -y python3-matplotlib
 sudo apt-get install -y python3-opencv
